@@ -1,0 +1,6 @@
+@POC.ThomasGreg.Cadastro.Api_HostAddress = http://localhost:5183
+
+GET {{POC.ThomasGreg.Cadastro.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
