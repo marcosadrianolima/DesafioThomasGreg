@@ -1,4 +1,10 @@
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using POC.ThomasGreg.Cadastro.Application.DTO;
+using POC.ThomasGreg.Cadastro.Application.Features.Cliente.Editar;
+using POC.ThomasGreg.Cadastro.Application.Features.Cliente.Inserir;
+using POC.ThomasGreg.Cadastro.Application.Features.Cliente.Listar;
 
 namespace POC.ThomasGreg.Cadastro.Api.Controllers
 {
@@ -6,28 +12,55 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
     [Route("[controller]")]
     public class ClienteController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        private readonly ILogger<ClienteController> _logger;
-
-        public ClienteController(ILogger<ClienteController> logger)
+        public ClienteController(IMediator mediator, IMapper mapper)
         {
-            _logger = logger;
+            _mediator = mediator;
+            _mapper = mapper;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet(Name = "Listar")]
+        public async Task<IActionResult> Listar()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var clientes = await _mediator.Send(new ListarClientQuery());
+
+            return Ok(clientes);
+        }
+
+        [HttpPost(Name = "Inserir")]
+        public async Task<IActionResult> Inserir([FromBody] ClienteDTO cliente)
+        {
+            var clientes = await _mediator.Send(new InserirClientCommand()
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                ClienteDTO = cliente
+            });
+
+            return Ok(clientes);
+        }
+
+        [HttpPut(Name = "Editar")]
+        public async Task<IActionResult> Editar([FromBody] ClienteDTO cliente)
+        {
+            var clientes = await _mediator.Send(new EditarClientCommand()
+            {
+                ClienteDTO = cliente,
+                Id = cliente.Id
+            });
+
+            return Ok(clientes);
+        }
+
+        [HttpDelete(Name = "Excluir")]
+        public async Task<IActionResult> Excluir([FromBody] long id)
+        {
+            var clientes = await _mediator.Send(new ExcluirClientCommand()
+            {
+                Id = id
+            });
+
+            return Ok(clientes);
         }
     }
 }

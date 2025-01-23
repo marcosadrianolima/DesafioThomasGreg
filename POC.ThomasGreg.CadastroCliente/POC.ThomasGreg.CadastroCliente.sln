@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Domain", "Projetos\POC.ThomasGreg.Cadastro.Domain\POC.ThomasGreg.Cadastro.Domain\POC.ThomasGreg.Cadastro.Domain.csproj", "{B6E50CFD-C672-4507-8B8C-B9D694E19B1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Infra", "Projetos\POC.ThomasGreg.Cadastro.Infra\POC.ThomasGreg.Cadastro.Infra\POC.ThomasGreg.Cadastro.Infra.csproj", "{5278525F-5C2D-4417-85D3-41483D7DCCA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Infra.Memoria", "Projetos\POC.ThomasGreg.Cadastro.Infra\POC.ThomasGreg.Cadastro.Infra\POC.ThomasGreg.Cadastro.Infra.Memoria.csproj", "{5278525F-5C2D-4417-85D3-41483D7DCCA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
