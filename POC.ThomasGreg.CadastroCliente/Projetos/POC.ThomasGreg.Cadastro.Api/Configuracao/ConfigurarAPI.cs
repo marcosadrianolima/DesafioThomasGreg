@@ -1,24 +1,43 @@
 ﻿using POC.ThomasGreg.Cadastro.Application;
 using POC.ThomasGreg.Cadastro.Application.Features.Cliente.Listar;
 using POC.ThomasGreg.Cadastro.Infra;
+using POC.ThomasGreg.Cadastro.Infra.Log;
+using Serilog;
 
 namespace POC.ThomasGreg.Cadastro.Api.Configuracao
 {
     public static class ConfigurarAPI
     {
-        public static IServiceCollection ConfiguracaoEspecifica(this IServiceCollection service)
+        public static WebApplicationBuilder ConfiguracaoEspecifica(this WebApplicationBuilder builder)
         {
             // Registra o MediatR
-            service.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ListarClientQueryHandler).Assembly));
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ListarClienteQueryHandler).Assembly));
 
             //Dependencias de Infra
-            service.AdicionarDependenciasInfra();
+            builder.Services.AdicionarDependenciasInfra();
 
             // Configurar AutoMapper
             // Registrar o AutoMapper
-            service.AddAutoMapper(typeof(MappingProfile).Assembly);
+            builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
-            return service;
+            AdicionarLogFile(builder);
+
+
+            return builder;
+        }
+
+        private static void AdicionarLogFile(WebApplicationBuilder builder)
+        {
+            // Configura o Serilog
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(builder.Configuration) // Lê as configurações do appsettings.json
+                .Enrich.FromLogContext()
+                .Enrich.WithThreadId()
+                .CreateLogger();
+
+            builder.Services.AddSingleton(Log.Logger);
+
+            builder.Services.AdicionarServicoLog();
         }
     }
 }

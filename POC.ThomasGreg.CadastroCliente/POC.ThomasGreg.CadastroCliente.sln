@@ -15,9 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Application", "Projetos\POC.ThomasGreg.Cadastro.Application\POC.ThomasGreg.Cadastro.Application.csproj", "{5AF2317A-895E-4B09-AE54-364E9076164D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Domain", "Projetos\POC.ThomasGreg.Cadastro.Domain\POC.ThomasGreg.Cadastro.Domain\POC.ThomasGreg.Cadastro.Domain.csproj", "{B6E50CFD-C672-4507-8B8C-B9D694E19B1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Infra.Log", "Projetos\POC.ThomasGreg.Cadastro.Infra.Log\POC.ThomasGreg.Cadastro.Infra.Log.csproj", "{7A22ED97-CF3C-43E3-9822-C803CD066B6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Infra.Memoria", "Projetos\POC.ThomasGreg.Cadastro.Infra\POC.ThomasGreg.Cadastro.Infra\POC.ThomasGreg.Cadastro.Infra.Memoria.csproj", "{5278525F-5C2D-4417-85D3-41483D7DCCA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Infra.Memoria", "Projetos\POC.ThomasGreg.Cadastro.Infra\POC.ThomasGreg.Cadastro.Infra.Memoria.csproj", "{D72F87C3-D009-4ECA-9A51-C477B94F5A4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Domain", "Projetos\POC.ThomasGreg.Cadastro.Domain\POC.ThomasGreg.Cadastro.Domain.csproj", "{EA5EF2BB-6287-4411-8BA4-55C692686D62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,14 +35,18 @@ Global
 		{5AF2317A-895E-4B09-AE54-364E9076164D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AF2317A-895E-4B09-AE54-364E9076164D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AF2317A-895E-4B09-AE54-364E9076164D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6E50CFD-C672-4507-8B8C-B9D694E19B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6E50CFD-C672-4507-8B8C-B9D694E19B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6E50CFD-C672-4507-8B8C-B9D694E19B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6E50CFD-C672-4507-8B8C-B9D694E19B1C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5278525F-5C2D-4417-85D3-41483D7DCCA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5278525F-5C2D-4417-85D3-41483D7DCCA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5278525F-5C2D-4417-85D3-41483D7DCCA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5278525F-5C2D-4417-85D3-41483D7DCCA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A22ED97-CF3C-43E3-9822-C803CD066B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A22ED97-CF3C-43E3-9822-C803CD066B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A22ED97-CF3C-43E3-9822-C803CD066B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A22ED97-CF3C-43E3-9822-C803CD066B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D72F87C3-D009-4ECA-9A51-C477B94F5A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D72F87C3-D009-4ECA-9A51-C477B94F5A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D72F87C3-D009-4ECA-9A51-C477B94F5A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D72F87C3-D009-4ECA-9A51-C477B94F5A4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5EF2BB-6287-4411-8BA4-55C692686D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5EF2BB-6287-4411-8BA4-55C692686D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5EF2BB-6287-4411-8BA4-55C692686D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5EF2BB-6287-4411-8BA4-55C692686D62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,7 +54,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AC32A7BB-35B7-4DA0-BFE4-A794A62003A1} = {57C5BD16-99DC-44D8-B13E-8663F9FF905B}
 		{5AF2317A-895E-4B09-AE54-364E9076164D} = {B8043B3E-CC2D-4D88-A67A-87BB11FAF135}
-		{B6E50CFD-C672-4507-8B8C-B9D694E19B1C} = {0665EC24-3985-4E84-AFE1-086EE5A98448}
-		{5278525F-5C2D-4417-85D3-41483D7DCCA2} = {2E2BD35D-3628-4B61-96D8-2044B4BC197F}
+		{7A22ED97-CF3C-43E3-9822-C803CD066B6C} = {2E2BD35D-3628-4B61-96D8-2044B4BC197F}
+		{D72F87C3-D009-4ECA-9A51-C477B94F5A4B} = {2E2BD35D-3628-4B61-96D8-2044B4BC197F}
+		{EA5EF2BB-6287-4411-8BA4-55C692686D62} = {0665EC24-3985-4E84-AFE1-086EE5A98448}
 	EndGlobalSection
 EndGlobal
