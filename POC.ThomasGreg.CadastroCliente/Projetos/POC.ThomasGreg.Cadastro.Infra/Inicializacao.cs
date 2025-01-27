@@ -6,7 +6,7 @@ namespace POC.ThomasGreg.Cadastro.Infra
 {
     public static class Inicializacao
     {
-        public static IServiceCollection AdicionarDependenciasInfra(this IServiceCollection service)
+        public static IServiceCollection AdicionarDependenciasInfraMemoria(this IServiceCollection service)
         {
             service.AddScoped<IRepositorioCliente, RepositorioCliente>();
             service.AddScoped<IRepositorioLogradouro, RepositorioLogradouro>();

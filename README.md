@@ -9,6 +9,8 @@ Arquitetura
     - Utilização do AutoMapper: Vai auxiliar na transformação do dado de um tipo para outro.
         Exemplo: Transformar uma VO (Value Object) em uma DTO (Data Transfer Object)
 	- Utilização de CQRS nos fluxos
+	- Utilização do entity framework com o OnModelCreating
+	
 
 - Documentar as decisões do design e explicar como elas atendem aos requisitos do projeto
 

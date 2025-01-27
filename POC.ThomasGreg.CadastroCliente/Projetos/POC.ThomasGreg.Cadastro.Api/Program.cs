@@ -1,4 +1,5 @@
 using POC.ThomasGreg.Cadastro.Api.Configuracao;
+using POC.ThomasGreg.Cadastro.Infra.SqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.ConfiguracaoEspecifica();
 
 var app = builder.Build();
+
+app.Services.AdicionarMigration();
 
 // Configure o pipeline de requisições HTTP.
 if (app.Environment.IsDevelopment())

@@ -9,6 +9,10 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     <PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
@@ -21,6 +25,7 @@
     <ProjectReference Include="..\POC.ThomasGreg.Cadastro.Application\POC.ThomasGreg.Cadastro.Application.csproj" />
     <ProjectReference Include="..\POC.ThomasGreg.Cadastro.Domain\POC.ThomasGreg.Cadastro.Domain.csproj" />
     <ProjectReference Include="..\POC.ThomasGreg.Cadastro.Infra.Log\POC.ThomasGreg.Cadastro.Infra.Log.csproj" />
+    <ProjectReference Include="..\POC.ThomasGreg.Cadastro.Infra.SqlServer\POC.ThomasGreg.Cadastro.Infra.SqlServer.csproj" />
     <ProjectReference Include="..\POC.ThomasGreg.Cadastro.Infra\POC.ThomasGreg.Cadastro.Infra.Memoria.csproj" />
   </ItemGroup>
 

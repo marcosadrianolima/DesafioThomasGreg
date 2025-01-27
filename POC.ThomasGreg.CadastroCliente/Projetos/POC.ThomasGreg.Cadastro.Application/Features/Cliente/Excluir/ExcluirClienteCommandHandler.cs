@@ -21,7 +21,7 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Inserir
             {
                 _log.Debug($"Excluindo registro com ID {request.Id}");
 
-                if(request.Id <= 0)
+                if (request.Id <= 0)
                 {
                     _log.Debug($"O campo ID deve ser informado");
 

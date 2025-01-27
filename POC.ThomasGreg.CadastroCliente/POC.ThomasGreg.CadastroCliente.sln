@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Inf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Domain", "Projetos\POC.ThomasGreg.Cadastro.Domain\POC.ThomasGreg.Cadastro.Domain.csproj", "{EA5EF2BB-6287-4411-8BA4-55C692686D62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.ThomasGreg.Cadastro.Infra.SqlServer", "Projetos\POC.ThomasGreg.Cadastro.Infra.SqlServer\POC.ThomasGreg.Cadastro.Infra.SqlServer.csproj", "{597460F6-07C4-4746-990D-556FCA637BF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{EA5EF2BB-6287-4411-8BA4-55C692686D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA5EF2BB-6287-4411-8BA4-55C692686D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA5EF2BB-6287-4411-8BA4-55C692686D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{597460F6-07C4-4746-990D-556FCA637BF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{597460F6-07C4-4746-990D-556FCA637BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{597460F6-07C4-4746-990D-556FCA637BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{597460F6-07C4-4746-990D-556FCA637BF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +63,6 @@ Global
 		{7A22ED97-CF3C-43E3-9822-C803CD066B6C} = {2E2BD35D-3628-4B61-96D8-2044B4BC197F}
 		{D72F87C3-D009-4ECA-9A51-C477B94F5A4B} = {2E2BD35D-3628-4B61-96D8-2044B4BC197F}
 		{EA5EF2BB-6287-4411-8BA4-55C692686D62} = {0665EC24-3985-4E84-AFE1-086EE5A98448}
+		{597460F6-07C4-4746-990D-556FCA637BF6} = {2E2BD35D-3628-4B61-96D8-2044B4BC197F}
 	EndGlobalSection
 EndGlobal

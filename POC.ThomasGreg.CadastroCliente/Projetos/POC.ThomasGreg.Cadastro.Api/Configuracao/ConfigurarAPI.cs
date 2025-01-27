@@ -2,6 +2,7 @@
 using POC.ThomasGreg.Cadastro.Application.Features.Cliente.Listar;
 using POC.ThomasGreg.Cadastro.Infra;
 using POC.ThomasGreg.Cadastro.Infra.Log;
+using POC.ThomasGreg.Cadastro.Infra.SqlServer;
 using Serilog;
 
 namespace POC.ThomasGreg.Cadastro.Api.Configuracao
@@ -14,7 +15,9 @@ namespace POC.ThomasGreg.Cadastro.Api.Configuracao
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ListarClienteQueryHandler).Assembly));
 
             //Dependencias de Infra
-            builder.Services.AdicionarDependenciasInfra();
+            builder.Services.AdicionarDependenciasInfraMemoria();
+
+            builder.Services.AdicionarDependenciasInfraSqlServer(connectionString: builder.Configuration.GetConnectionString("DefaultConnection"));
 
             // Configurar AutoMapper
             // Registrar o AutoMapper
