@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using POC.ThomasGreg.Cadastro.Domain.Features.Cliente.Entidades;
 
-namespace POC.ThomasGreg.Cadastro.Infra.SqlServer.Configuration
+namespace POC.ThomasGreg.Cadastro.Infra.SqlServer.Feature.Cliente
 {
     public class ClienteConfiguration : IEntityTypeConfiguration<ClienteVO>
     {

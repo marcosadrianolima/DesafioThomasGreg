@@ -18,7 +18,7 @@ namespace POC.ThomasGreg.Cadastro.Infra.SqlServer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Logotipo = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                    Logotipo = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {

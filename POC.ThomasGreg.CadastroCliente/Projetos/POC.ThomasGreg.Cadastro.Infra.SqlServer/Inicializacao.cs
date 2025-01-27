@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using POC.ThomasGreg.Cadastro.Domain.Features.Cliente.Repositorio;
+using POC.ThomasGreg.Cadastro.Infra.SqlServer.Feature.Cliente;
 
 namespace POC.ThomasGreg.Cadastro.Infra.SqlServer
 {
@@ -7,7 +9,11 @@ namespace POC.ThomasGreg.Cadastro.Infra.SqlServer
     {
         public static IServiceCollection AdicionarDependenciasInfraSqlServer(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<CadastroDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<CadastroDbContext>(options => options.UseSqlServer(connectionString)
+                                                                        .EnableDetailedErrors()
+                                                                        .EnableSensitiveDataLogging());
+
+            services.AddScoped<IRepositorioCliente, RepositorioCliente>();
 
             return services;
         }

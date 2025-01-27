@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using POC.ThomasGreg.Cadastro.Domain.Features.Cliente.Entidades;
-using POC.ThomasGreg.Cadastro.Infra.SqlServer.Configuration;
+using POC.ThomasGreg.Cadastro.Infra.SqlServer.Feature.Cliente;
 
 namespace POC.ThomasGreg.Cadastro.Infra.SqlServer
 {
