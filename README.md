@@ -10,6 +10,7 @@ Arquitetura
         Exemplo: Transformar uma VO (Value Object) em uma DTO (Data Transfer Object)
 	- Utilização de CQRS nos fluxos
 	- Utilização do entity framework com o OnModelCreating
+	- Utilização de JWT bearer na autenticação da API com usuario: administrador e senha: senha@123
 	
 
 - Documentar as decisões do design e explicar como elas atendem aos requisitos do projeto

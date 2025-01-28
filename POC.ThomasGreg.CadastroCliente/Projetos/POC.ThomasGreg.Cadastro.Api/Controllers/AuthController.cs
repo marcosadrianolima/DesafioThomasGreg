@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using POC.ThomasGreg.Cadastro.Api.Configuracao;
 
@@ -19,7 +18,7 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
         public IActionResult Login([FromBody] UsuarioLogin loginRequest)
         {
             // Aqui, você pode validar as credenciais com sua base de dados
-            if (loginRequest.Usuario == "administrator" && loginRequest.Senha == "senha@123")
+            if (loginRequest.Usuario == "administrador" && loginRequest.Senha == "senha@123")
             {
                 var token = _jwtService.GenerateToken("1", "usuario", "administrator");
 

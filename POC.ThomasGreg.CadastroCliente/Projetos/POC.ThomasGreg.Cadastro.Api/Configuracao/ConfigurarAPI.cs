@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using POC.ThomasGreg.Cadastro.Application;
 using POC.ThomasGreg.Cadastro.Application.Features.Cliente.Listar;
 using POC.ThomasGreg.Cadastro.Infra;
