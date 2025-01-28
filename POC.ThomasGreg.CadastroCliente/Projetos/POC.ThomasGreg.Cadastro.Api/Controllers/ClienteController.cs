@@ -1,6 +1,8 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using POC.ThomasGreg.Cadastro.Api.Configuracao;
 using POC.ThomasGreg.Cadastro.Application.DTO;
 using POC.ThomasGreg.Cadastro.Application.Features.Cliente.Editar;
 using POC.ThomasGreg.Cadastro.Application.Features.Cliente.Inserir;
@@ -11,17 +13,20 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class ClienteController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
         private readonly ILogThomasGreg _log;
+        private readonly JwtService _jwtService;
 
-        public ClienteController(IMediator mediator, IMapper mapper, ILogThomasGreg log)
+        public ClienteController(IMediator mediator, IMapper mapper, ILogThomasGreg log, JwtService jwtService)
         {
             _mediator = mediator;
             _mapper = mapper;
             _log = log;
+            _jwtService = jwtService;
         }
 
         [HttpGet(Name = "Listar")]

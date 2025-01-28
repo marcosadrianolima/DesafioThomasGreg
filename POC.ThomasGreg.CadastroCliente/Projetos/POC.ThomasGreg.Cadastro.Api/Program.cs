@@ -1,3 +1,4 @@
+using Microsoft.OpenApi.Models;
 using POC.ThomasGreg.Cadastro.Api.Configuracao;
 using POC.ThomasGreg.Cadastro.Infra.SqlServer;
 
@@ -11,8 +12,34 @@ builder.Services.AddControllers(options =>
 });
 
 // Swagger
+builder.Services.AddSwaggerGen(c =>
+{
+    // Definindo a autenticação no Swagger
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid JWT token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] { }
+        }
+    });
+});
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.ConfiguracaoEspecifica();
 
@@ -34,6 +61,7 @@ app.UseMiddleware<CustomExceptionMiddleware>();  // Middleware de exceção
 app.UseHttpsRedirection();
 
 // Habilita a autorização
+app.UseAuthentication();
 app.UseAuthorization();
 
 // Mapeia os controladores
