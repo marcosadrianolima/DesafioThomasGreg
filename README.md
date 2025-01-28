@@ -2,7 +2,7 @@
 Repositório criado para armazenas o desafio proposto pela empresa Thomas Greg
 
 Arquitetura
-- Desenhar a arquitetura da solução
+- Desenhar a arquitetura da solução BACKEND
 	- Utilização do MediatR para diminuir o acoplamento entre a camada da API e as camadas da Aplicação
 	- Utilização do Microsoft.Extensions.DependencyInjection para guardar dependências e seguir os princípios do padrão SOLID.
 	- Criação de ViewModel para expor dados aos usuários
@@ -11,7 +11,8 @@ Arquitetura
 	- Utilização de CQRS nos fluxos
 	- Utilização do entity framework com o OnModelCreating
 	- Utilização de JWT bearer na autenticação da API com usuario: administrador e senha: senha@123
-	
+- Desenhar a arquitetura da solução FRONTEND
+	- 
 
 - Documentar as decisões do design e explicar como elas atendem aos requisitos do projeto
 

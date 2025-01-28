@@ -1,6 +1,5 @@
 using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using POC.ThomasGreg.Cadastro.Api.Configuracao;
 using POC.ThomasGreg.Cadastro.Application.DTO;
@@ -13,7 +12,7 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+    //[Authorize]
     public class ClienteController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -43,6 +42,25 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
             _log.Information($"Finalizando listagem de cliente");
 
             return Ok(listarClienteResposta);
+        }
+
+        [HttpGet("Buscar/{id}", Name = "BuscarPorId")]
+        [ProducesResponseType(typeof(BuscarPorIdResposta), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(BuscarPorIdResposta), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> BuscarPorId(long id)
+        {
+            _log.IdentificadorLog($"Busca de Cliente");
+
+            _log.Information($"Iniciando busca de cliente por ID");
+
+            var clientes = await _mediator.Send(new BuscarPorIdQuery()
+            {
+                Id = id
+            });
+
+            _log.Information($"Finalizando busca de cliente por ID");
+
+            return Ok(clientes);
         }
 
         [HttpPost(Name = "Inserir")]
@@ -84,10 +102,10 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
             return Ok(clientes);
         }
 
-        [HttpDelete(Name = "Excluir")]
+        [HttpDelete("Excluir/{id}", Name = "Excluir")]
         [ProducesResponseType(typeof(ExcluirClienteResposta), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ExcluirClienteResposta), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Excluir([FromBody] long id)
+        public async Task<IActionResult> Excluir(long id)
         {
             _log.IdentificadorLog($"Exclusão Cliente");
 

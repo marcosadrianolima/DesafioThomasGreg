@@ -1,0 +1,18 @@
+﻿@model ClienteDTO
+
+<h2>Criar Cliente</h2>
+
+@using (Html.BeginForm("Inserir", "Cliente", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(m => m.Nome)
+    @Html.TextBoxFor(m => m.Nome)
+
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)
+
+    <!-- Campo para Upload de Imagem -->
+    @Html.LabelFor(m => m.Logotipo)
+    <input type="file" name="Logotipo" accept="image/*" />
+
+    <button type="submit">Salvar</button>
+}
