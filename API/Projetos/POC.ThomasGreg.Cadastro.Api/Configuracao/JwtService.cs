@@ -49,4 +49,8 @@ namespace POC.ThomasGreg.Cadastro.Api.Configuracao
         public string Usuario { get; set; }
         public string Senha { get; set; }
     }
+    public class TokenResult
+    {
+        public string Token { get; set; }
+    }
 }

@@ -19,8 +19,8 @@ namespace POC.ThomasGreg.Cadastro.Domain.Features.Cliente.Entidades
         public void Atualizar(ClienteVO cliente)
         {
             Nome = cliente.Nome;
-            Email = cliente.Email;
             Logotipo = cliente.Logotipo;
+            Logradouros = cliente.Logradouros;
         }
 
         public (bool, string) Valido()

@@ -1,18 +1,116 @@
 ﻿@model ClienteDTO
 
-<h2>Criar Cliente</h2>
+@{
+    var mensagemSucesso = TempData["MensagemSucesso"] as string;
+    var mensagemErro = TempData["MensagemErro"] as string;
+}
 
-@using (Html.BeginForm("Inserir", "Cliente", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@if (!string.IsNullOrEmpty(mensagemSucesso) && string.IsNullOrEmpty(mensagemErro))
 {
-    @Html.LabelFor(m => m.Nome)
-    @Html.TextBoxFor(m => m.Nome)
+    <div class="alert alert-success">
+        @mensagemSucesso
+    </div>
+}
 
-    @Html.LabelFor(m => m.Email)
-    @Html.TextBoxFor(m => m.Email)
+@if (!string.IsNullOrEmpty(mensagemErro) && string.IsNullOrEmpty(mensagemSucesso))
+{
+    <div class="alert alert-danger">
+        @mensagemErro
+    </div>
+}
 
-    <!-- Campo para Upload de Imagem -->
-    @Html.LabelFor(m => m.Logotipo)
-    <input type="file" name="Logotipo" accept="image/*" />
+<div class="container mt-5">
+    <h2 class="mb-4">@(Model.Id == 0 ? "Criar Cliente" : "Editar Cliente")</h2>
 
-    <button type="submit">Salvar</button>
+    @using (Html.BeginForm(Model.Id == 0 ? "Inserir" : "Editar", "Cliente", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation", novalidate = "true" }))
+    {
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Nome, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", required = "true" })
+            <div class="invalid-feedback">Por favor, insira o nome.</div>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", required = "true" })
+            <div class="invalid-feedback">Por favor, insira um e-mail válido.</div>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Logotipo, new { @class = "form-label" })
+            <input type="file" name="Logotipo" class="form-control" accept="image/*" />
+            @if (Model.Logotipo != null && Model.Logotipo.Length > 0)
+            {
+                <div class="mt-2">
+                    <p>Logotipo Atual:</p>
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Logotipo)" alt="Logotipo Atual" class="img-thumbnail" width="150" />
+                </div>
+            }
+        </div>
+
+        <h3 class="mt-4">Logradouros</h3>
+        <div id="logradouros" class="mb-3">
+            @if (Model.Logradouros != null)
+            {
+                for (int i = 0; i < Model.Logradouros.Count; i++)
+                {
+                    <div class="logradouro-item mb-3 border p-3">
+                        @Html.HiddenFor(m => m.Logradouros[i].Id)
+                        @Html.HiddenFor(m => m.Logradouros[i].ClienteId)
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.Logradouros[i].Nome, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Logradouros[i].Nome, new { @class = "form-control", required = "true" })
+                            <div class="invalid-feedback">Por favor, insira o nome do logradouro.</div>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-sm remover-logradouro">Remover</button>
+                    </div>
+                }
+            }
+        </div>
+
+        <button type="button" id="adicionar-logradouro" class="btn btn-secondary mb-3">Adicionar Logradouro</button>
+
+        <button type="submit" class="btn btn-primary mb-3">Salvar</button>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Adicionar novo logradouro
+            $("#adicionar-logradouro").click(function () {
+                var index = $("#logradouros .logradouro-item").length;
+                var novoLogradouro = `
+                    <div class="logradouro-item mb-3 border p-3">
+                        <input type="hidden" name="Logradouros[${index}].Id" value="0" />
+                        <input type="hidden" name="Logradouros[${index}].ClienteId" value="@Model.Id" />
+                        <div class="mb-3">
+                            <label class="form-label">Nome do Logradouro</label>
+                            <input type="text" name="Logradouros[${index}].Nome" class="form-control" required />
+                            <div class="invalid-feedback">Por favor, insira o nome do logradouro.</div>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-sm remover-logradouro">Remover</button>
+                    </div>
+                `;
+                $("#logradouros").append(novoLogradouro);
+            });
+
+            // Remover logradouro
+            $(document).on("click", ".remover-logradouro", function () {
+                $(this).closest(".logradouro-item").remove();
+                reindexarLogradouros();
+            });
+
+            // Reindexar logradouros
+            function reindexarLogradouros() {
+                $("#logradouros .logradouro-item").each(function (index) {
+                    $(this).find("input[name$='.Id']").attr("name", `Logradouros[${index}].Id`);
+                    $(this).find("input[name$='.ClienteId']").attr("name", `Logradouros[${index}].ClienteId`);
+                    $(this).find("input[name$='.Nome']").attr("name", `Logradouros[${index}].Nome`);
+                });
+            }
+        });
+    </script>
 }

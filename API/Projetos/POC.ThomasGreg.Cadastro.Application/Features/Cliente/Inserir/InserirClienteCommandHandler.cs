@@ -41,6 +41,18 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Inserir
                         Mensagem = $"Os seguintes campos estão invalidos: {mensagemErro}",
                     });
                 }
+                _log.Verbose($"Buscando cliente pelo email");
+
+                var emailCadastrado = _repositorioCliente.ExisteEmailCadastrado(clienteVo.Email);
+
+                if (emailCadastrado)
+                {
+                    return Task.FromResult(new InserirClienteResposta()
+                    {
+                        IsSucess = false,
+                        Mensagem = "E-mail informado ja está cadastrado"
+                    });
+                }
 
                 _log.Verbose($"Inserindo registro no banco");
 

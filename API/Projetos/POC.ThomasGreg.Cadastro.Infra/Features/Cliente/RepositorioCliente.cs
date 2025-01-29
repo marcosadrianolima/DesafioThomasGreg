@@ -51,5 +51,10 @@ namespace POC.ThomasGreg.Cadastro.Infra.Features.Cliente
 
             return true;
         }
+
+        public bool ExisteEmailCadastrado(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

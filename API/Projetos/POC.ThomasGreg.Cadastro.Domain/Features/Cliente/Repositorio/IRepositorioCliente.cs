@@ -13,5 +13,7 @@ namespace POC.ThomasGreg.Cadastro.Domain.Features.Cliente.Repositorio
         void Editar(long id, ClienteVO cliente);
 
         bool Excluir(long id);
+
+        bool ExisteEmailCadastrado(string email);
     }
 }

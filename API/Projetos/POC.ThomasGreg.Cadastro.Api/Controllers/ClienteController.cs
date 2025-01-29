@@ -1,5 +1,6 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using POC.ThomasGreg.Cadastro.Api.Configuracao;
 using POC.ThomasGreg.Cadastro.Application.DTO;
@@ -12,7 +13,7 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
 {
     [ApiController]
     [Route("[Controller]")]
-    //[Authorize]
+    [Authorize]
     public class ClienteController : ControllerBase
     {
         private readonly IMediator _mediator;

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using POC.ThomasGreg.Cadastro.Application;
 using POC.ThomasGreg.Cadastro.Application.Features.Cliente.Listar;
-using POC.ThomasGreg.Cadastro.Infra;
 using POC.ThomasGreg.Cadastro.Infra.Log;
 using POC.ThomasGreg.Cadastro.Infra.SqlServer;
 using Serilog;

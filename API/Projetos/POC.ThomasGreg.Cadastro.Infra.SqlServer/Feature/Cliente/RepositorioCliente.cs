@@ -73,5 +73,10 @@ namespace POC.ThomasGreg.Cadastro.Infra.SqlServer.Feature.Cliente
             _context.SaveChanges();
             return true;
         }
+
+        public bool ExisteEmailCadastrado(string email)
+        {
+            return _context.Clientes.FirstOrDefault(x => x.Email == email) != null;
+        }
     }
 }

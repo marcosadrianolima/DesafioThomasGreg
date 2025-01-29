@@ -14,18 +14,17 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
             _jwtService = jwtService;
         }
 
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] UsuarioLogin loginRequest)
+        [HttpPost("Login")]
+        public TokenResult Login([FromBody] UsuarioLogin loginRequest)
         {
-            // Aqui, você pode validar as credenciais com sua base de dados
             if (loginRequest.Usuario == "administrador" && loginRequest.Senha == "senha@123")
             {
                 var token = _jwtService.GenerateToken("1", "usuario", "administrator");
 
-                return Ok(new { Token = token });
+                return new TokenResult() { Token = token };
             }
 
-            return Unauthorized("Credenciais inválidas.");
+            return new TokenResult();
         }
     }
 }
