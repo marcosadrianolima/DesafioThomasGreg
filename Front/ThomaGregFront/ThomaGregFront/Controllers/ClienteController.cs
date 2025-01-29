@@ -7,13 +7,17 @@ namespace ThomaGregFront.Controllers
 {
     public class ClienteController : Controller
     {
-        private static readonly string apiBaseUrl = "http://localhost:5183/"; // URL da sua API
+        private readonly string _apiBaseUrl = "http://localhost:5183/"; // URL da sua API
         private readonly HttpClient client;
-        private ClienteDTO _clienteEmEdição;
-
-        public ClienteController()
+        private string _usuarioBeare;
+        private string _senhaBeare;
+        
+        public ClienteController(IConfiguration configuration)
         {
             client = new HttpClient();
+            _apiBaseUrl = configuration["UrlApiCrud"];
+            _usuarioBeare = configuration["Bearer:Usuario"];
+            _senhaBeare = configuration["Bearer:Senha"];
         }
 
         // Listar clientes
@@ -21,7 +25,7 @@ namespace ThomaGregFront.Controllers
         {
             await ConfigurarAutenticacaoAsync();
 
-            var response = await client.GetAsync(apiBaseUrl + "Cliente");
+            var response = await client.GetAsync(_apiBaseUrl + "Cliente");
             var listarResult = await response.Content.ReadAsAsync<ListarClienteResposta>();
             return View(listarResult.ClienteDTOs);
         }
@@ -29,7 +33,7 @@ namespace ThomaGregFront.Controllers
         // Detalhes do cliente
         public async Task<ActionResult> Details(int id)
         {
-            var response = await client.GetAsync(apiBaseUrl + "Cliente/" + id);
+            var response = await client.GetAsync(_apiBaseUrl + "Cliente/" + id);
             var cliente = await response.Content.ReadAsAsync<ClienteDTO>();
             return View(cliente);
         }
@@ -67,7 +71,7 @@ namespace ThomaGregFront.Controllers
                 }
 
                 // Enviar o cliente e seus logradouros para a API
-                var response = await client.PostAsJsonAsync(apiBaseUrl + "Cliente/", cliente);
+                var response = await client.PostAsJsonAsync(_apiBaseUrl + "Cliente/", cliente);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -96,7 +100,7 @@ namespace ThomaGregFront.Controllers
         {
             await ConfigurarAutenticacaoAsync();
 
-            var response = await client.GetAsync(apiBaseUrl + "Cliente/Buscar/" + id);
+            var response = await client.GetAsync(_apiBaseUrl + "Cliente/Buscar/" + id);
             var cliente = await response.Content.ReadAsAsync<BuscarPorIdResposta>();
             return View(cliente.ClienteDTO);
         }
@@ -136,7 +140,7 @@ namespace ThomaGregFront.Controllers
                 }
 
                 // Enviar o cliente e seus logradouros para a API
-                var response = await client.PutAsJsonAsync(apiBaseUrl + "Cliente/", cliente);
+                var response = await client.PutAsJsonAsync(_apiBaseUrl + "Cliente/", cliente);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -159,7 +163,7 @@ namespace ThomaGregFront.Controllers
         {
             await ConfigurarAutenticacaoAsync();
 
-            var response = await client.DeleteAsync(apiBaseUrl + "Cliente/Excluir/" + id);
+            var response = await client.DeleteAsync(_apiBaseUrl + "Cliente/Excluir/" + id);
 
             if (response.IsSuccessStatusCode)
             {
@@ -177,10 +181,10 @@ namespace ThomaGregFront.Controllers
         private async Task<string> ObterTokenAutenticacaoAsync()
         {
             // Supondo que a API possua um endpoint para autenticação e retorno de token
-            var response = await client.PostAsJsonAsync(apiBaseUrl + "Auth/Login", new
+            var response = await client.PostAsJsonAsync(_apiBaseUrl + "Auth/Login", new
             {
-                Usuario = "administrador",
-                Senha = "senha@123"
+                Usuario = _usuarioBeare,
+                Senha = _senhaBeare
             });
 
             if (response.IsSuccessStatusCode)
