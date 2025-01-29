@@ -11,7 +11,7 @@ using POC.ThomasGreg.Cadastro.Domain.Compartilhados.Log;
 namespace POC.ThomasGreg.Cadastro.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[Controller]")]
     //[Authorize]
     public class ClienteController : ControllerBase
     {
@@ -28,7 +28,7 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
             _jwtService = jwtService;
         }
 
-        [HttpGet(Name = "Listar")]
+        [HttpGet]
         [ProducesResponseType(typeof(ListarClienteResposta), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ListarClienteResposta), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Listar()
@@ -44,7 +44,7 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
             return Ok(listarClienteResposta);
         }
 
-        [HttpGet("Buscar/{id}", Name = "BuscarPorId")]
+        [HttpGet("Buscar/{id}")]
         [ProducesResponseType(typeof(BuscarPorIdResposta), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BuscarPorIdResposta), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> BuscarPorId(long id)
@@ -63,7 +63,7 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
             return Ok(clientes);
         }
 
-        [HttpPost(Name = "Inserir")]
+        [HttpPost]
         [ProducesResponseType(typeof(InserirClienteResposta), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(InserirClienteResposta), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Inserir([FromBody] ClienteDTO cliente)
@@ -82,7 +82,7 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
             return Ok(clientes);
         }
 
-        [HttpPut(Name = "Editar")]
+        [HttpPut]
         [ProducesResponseType(typeof(EditarClienteResposta), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(EditarClienteResposta), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Editar([FromBody] ClienteDTO cliente)
@@ -102,7 +102,7 @@ namespace POC.ThomasGreg.Cadastro.Api.Controllers
             return Ok(clientes);
         }
 
-        [HttpDelete("Excluir/{id}", Name = "Excluir")]
+        [HttpDelete("Excluir/{id}")]
         [ProducesResponseType(typeof(ExcluirClienteResposta), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ExcluirClienteResposta), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Excluir(long id)

@@ -32,15 +32,15 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Listar
                         Mensagem = $"O Id não foi informado",
                     });
                 }
-                _log.Debug($"Buscando o cliente pelo ID {request.Id}");
+                _log.Verbose($"Buscando o cliente pelo ID {request.Id}");
 
                 var cliente = _repositorioCliente.BuscarPorId(request.Id);
 
-                _log.Debug($"Mapeando objetos para ClienteDTO");
+                _log.Verbose($"Mapeando objetos para ClienteDTO");
 
                 var clienteDTO = _mapper.Map<ClienteDTO>(cliente);
 
-                _log.Debug($"Retornando Objetos Mapeados");
+                _log.Verbose($"Montando retorno");
 
                 return Task.FromResult(new BuscarPorIdResposta()
                 {
@@ -55,7 +55,7 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Listar
 
                 return Task.FromResult(new BuscarPorIdResposta()
                 {
-                    IsSucess = true,
+                    IsSucess = false,
                     Mensagem = $"Ocorreu um erro na busca dos clientes cadastrados",
                 });
             }

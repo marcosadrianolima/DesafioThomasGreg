@@ -22,15 +22,15 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Listar
         {
             try
             {
-                _log.Debug($"Buscando os clientes cadastrados");
+                _log.Verbose($"Buscando os clientes cadastrados");
 
                 var clientes = _repositorioCliente.BuscarTodos(incluirLougradouro: false);
 
-                _log.Debug($"Mapeando objetos para ClienteDTO");
+                _log.Verbose($"Mapeando objetos para ClienteDTO");
 
                 var clientesDTO = _mapper.Map<List<ClienteDTO>>(clientes);
 
-                _log.Debug($"Retornando Objetos Mapeados");
+                _log.Verbose($"Retornando Objetos Mapeados");
 
                 return Task.FromResult(new ListarClienteResposta()
                 {
@@ -45,7 +45,7 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Listar
 
                 return Task.FromResult(new ListarClienteResposta()
                 {
-                    IsSucess = true,
+                    IsSucess = false,
                     Mensagem = $"Ocorreu um erro na busca dos clientes cadastrados",
                 });
             }

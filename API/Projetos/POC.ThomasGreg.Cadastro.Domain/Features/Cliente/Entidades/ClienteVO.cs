@@ -1,5 +1,7 @@
 ﻿
 
+using POC.ThomasGreg.Cadastro.Domain.Features.Logradouro.Entidade;
+
 namespace POC.ThomasGreg.Cadastro.Domain.Features.Cliente.Entidades
 {
     public class ClienteVO

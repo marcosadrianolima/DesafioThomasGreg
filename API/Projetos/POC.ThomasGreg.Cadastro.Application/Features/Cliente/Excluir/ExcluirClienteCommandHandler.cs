@@ -19,7 +19,7 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Inserir
         {
             try
             {
-                _log.Debug($"Excluindo registro com ID {request.Id}");
+                _log.Verbose($"Excluindo registro com ID {request.Id}");
 
                 if (request.Id <= 0)
                 {
@@ -46,7 +46,7 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Inserir
 
                 return Task.FromResult(new ExcluirClienteResposta()
                 {
-                    IsSucess = true,
+                    IsSucess = false,
                     Mensagem = $"Ocorreu um erro na exclusão do cliente",
                 });
             }

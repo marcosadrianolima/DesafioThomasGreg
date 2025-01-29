@@ -23,11 +23,11 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Inserir
         {
             try
             {
-                _log.Debug($"Mapeando VO para inserir cliente");
+                _log.Verbose($"Mapeando VO para inserir cliente");
 
                 var clienteVo = _mapper.Map<ClienteVO>(request.ClienteDTO);
 
-                _log.Debug($"Validando os campos do cliente");
+                _log.Verbose($"Validando os campos do cliente");
 
                 var (isValid, mensagemErro) = clienteVo.Valido();
 
@@ -42,11 +42,11 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Inserir
                     });
                 }
 
-                _log.Debug($"Inserindo registro no banco");
+                _log.Verbose($"Inserindo registro no banco");
 
                 _repositorioCliente.Inserir(clienteVo);
 
-                _log.Debug($"registro inserido com sucesso");
+                _log.Verbose($"registro inserido com sucesso");
 
                 return Task.FromResult(new InserirClienteResposta()
                 {
@@ -60,7 +60,7 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Inserir
 
                 return Task.FromResult(new InserirClienteResposta()
                 {
-                    IsSucess = true,
+                    IsSucess = false,
                     Mensagem = $"Ocorreu um erro na inserção do cliente",
                 });
             }

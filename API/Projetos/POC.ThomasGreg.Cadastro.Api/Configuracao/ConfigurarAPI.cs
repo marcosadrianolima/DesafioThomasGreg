@@ -18,7 +18,7 @@ namespace POC.ThomasGreg.Cadastro.Api.Configuracao
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ListarClienteQueryHandler).Assembly));
 
             //Dependencias de Infra
-            builder.Services.AdicionarDependenciasInfraMemoria();
+            //builder.Services.AdicionarDependenciasInfraMemoria();
 
             builder.Services.AdicionarDependenciasInfraSqlServer(connectionString: builder.Configuration.GetConnectionString("DefaultConnection"));
 

@@ -23,11 +23,11 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Editar
         {
             try
             {
-                _log.Debug($"Mapeando objeto para edição do cliente id {request.Id}");
+                _log.Verbose($"Mapeando objeto para edição do cliente id {request.Id}");
 
                 var clienteVO = _mapper.Map<ClienteVO>(request.ClienteDTO);
 
-                _log.Debug($"Validando os campos do cliente");
+                _log.Verbose($"Validando os campos do cliente");
 
                 var (isValid, mensagemErro) = clienteVO.Valido();
 
@@ -42,11 +42,11 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Editar
                     });
                 }
 
-                _log.Debug($"Editando registro");
+                _log.Verbose($"Editando registro");
 
                 _repositorioCliente.Editar(request.Id, clienteVO);
 
-                _log.Debug($"Registro editado com sucesso");
+                _log.Verbose($"Registro editado com sucesso");
 
                 return Task.FromResult(new EditarClienteResposta()
                 {
@@ -60,7 +60,7 @@ namespace POC.ThomasGreg.Cadastro.Application.Features.Cliente.Editar
 
                 return Task.FromResult(new EditarClienteResposta()
                 {
-                    IsSucess = true,
+                    IsSucess = false,
                     Mensagem = $"Ocorreu um erro na edição do cliente",
                 });
             }
